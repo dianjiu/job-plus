@@ -1,0 +1,36 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 18080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+
+spring:
+  application:
+    name: task-manage
+  profiles:
+    active: ${cfg.env}
+
+# 自定义jwt key
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: dianjiu_co #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: dianjiu  #JWT负载中拿到开头
+
+# 日志配置
+logback:
+  appName: task-manage
+  fileType: log
+
+logging:
+  config: classpath:logback-spring.xml
+

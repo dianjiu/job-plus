@@ -1,0 +1,1 @@
+java -jar task-manage-1.0-SNAPSHOT.jar

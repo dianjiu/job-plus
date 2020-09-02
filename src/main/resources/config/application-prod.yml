@@ -1,0 +1,2 @@
+spring:
+  profiles: prod #生产环境

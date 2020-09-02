@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.dianjiu.task.dao.TMenuDao">
+
+    <resultMap type="cn.org.dianjiu.task.entity.TMenu" id="TMenuResultMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+        <result property="menuUrl" column="menu_url" jdbcType="VARCHAR"/>
+        <result property="menuCode" column="menu_code" jdbcType="VARCHAR"/>
+        <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+        <result property="menuType" column="menu_type" jdbcType="INTEGER"/>
+        <result property="orderNum" column="order_num" jdbcType="INTEGER"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updator" column="updator" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="table_field">
+      id, menu_name, menu_url, menu_code, parent_id, menu_type, order_num, creator, create_time, updator, update_time, deleted      
+    </sql>
+
+    <!--通过Id查询单个对象-->
+    <select id="getById" resultMap="TMenuResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="table_field"/>
+        from t_menu
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+    <!--通过实体不为空的属性作为筛选条件查询对象列表-->
+    <select id="listByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.task.entity.TMenu">
+        select
+        <include refid="table_field"/>
+        from t_menu
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="menuName != null">
+                and menu_name = #{menuName,jdbcType=VARCHAR}
+            </if>
+            <if test="menuUrl != null">
+                and menu_url = #{menuUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="menuCode != null">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId,jdbcType=INTEGER}
+            </if>
+            <if test="menuType != null">
+                and menu_type = #{menuType,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <!--通过实体不为空的属性作为筛选条件查询单个对象-->
+    <select id="getByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.task.entity.TMenu">
+        select
+        <include refid="table_field"/>
+        from t_menu
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="menuName != null">
+                and menu_name = #{menuName,jdbcType=VARCHAR}
+            </if>
+            <if test="menuUrl != null">
+                and menu_url = #{menuUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="menuCode != null">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId,jdbcType=INTEGER}
+            </if>
+            <if test="menuType != null">
+                and menu_type = #{menuType,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <!--通过Id列表作为筛选条件查询对象列表，列表长度不为0-->
+    <select id="listByIds" resultMap="TMenuResultMap" parameterType="list">
+        select
+        <include refid="table_field"/>
+        from t_menu
+        where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--新增实体属性不为null的记录-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TMenu">
+        insert into t_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="menuUrl != null">
+                menu_url,
+            </if>
+            <if test="menuCode != null">
+                menu_code,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="menuType != null">
+                menu_type,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updator != null">
+                updator,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="menuName != null">
+                #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuUrl != null">
+                #{menuUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="menuCode != null">
+                #{menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="menuType != null">
+                #{menuType,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null">
+                #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true" parameterType="list">
+        insert into t_menu
+        (<if test="id != null">id,</if>menu_name, menu_url, menu_code, parent_id, menu_type, order_num, creator,
+        create_time, updator, update_time, deleted)
+        values
+        <foreach item="item" collection="list" separator="," open="" close="" index="index">
+            (<if test="item.id != null">#{item.id,jdbcType=INTEGER},</if>#{item.menuName,jdbcType=VARCHAR},
+            #{item.menuUrl,jdbcType=VARCHAR}, #{item.menuCode,jdbcType=VARCHAR}, #{item.parentId,jdbcType=INTEGER},
+            #{item.menuType,jdbcType=INTEGER}, #{item.orderNum,jdbcType=INTEGER}, #{item.creator,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP}, #{item.updator,jdbcType=VARCHAR},
+            #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleted,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改实体属性不为null的列-->
+    <update id="update" parameterType="cn.org.dianjiu.task.entity.TMenu">
+        update t_menu
+        <set>
+            <if test="menuName != null and menuName != ''">
+                menu_name = #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuUrl != null and menuUrl != ''">
+                menu_url = #{menuUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="menuCode != null and menuCode != ''">
+                menu_code = #{menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="menuType != null">
+                menu_type = #{menuType,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null and creator != ''">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null and updator != ''">
+                updator = #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--通过表字段修改实体属性不为null的列-->
+    <update id="updateByField">
+        update t_menu
+        <set>
+            <if test="where.menuName == null and set.menuName != null and set.menuName != ''">
+                menu_name = #{set.menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.menuUrl == null and set.menuUrl != null and set.menuUrl != ''">
+                menu_url = #{set.menuUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="where.menuCode == null and set.menuCode != null and set.menuCode != ''">
+                menu_code = #{set.menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="where.parentId == null and set.parentId != null">
+                parent_id = #{set.parentId,jdbcType=INTEGER},
+            </if>
+            <if test="where.menuType == null and set.menuType != null">
+                menu_type = #{set.menuType,jdbcType=INTEGER},
+            </if>
+            <if test="where.orderNum == null and set.orderNum != null">
+                order_num = #{set.orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="where.creator == null and set.creator != null and set.creator != ''">
+                creator = #{set.creator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.createTime == null and set.createTime != null">
+                create_time = #{set.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="where.updator == null and set.updator != null and set.updator != ''">
+                updator = #{set.updator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.updateTime == null and set.updateTime != null">
+                update_time = #{set.updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="where.deleted == null and set.deleted != null">
+                deleted = #{set.deleted,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            <if test="where.id != null">
+                and id = #{where.id,jdbcType=INTEGER}
+            </if>
+            <if test="where.menuName != null">
+                and menu_name = #{where.menuName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.menuUrl != null">
+                and menu_url = #{where.menuUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="where.menuCode != null">
+                and menu_code = #{where.menuCode,jdbcType=VARCHAR}
+            </if>
+            <if test="where.parentId != null">
+                and parent_id = #{where.parentId,jdbcType=INTEGER}
+            </if>
+            <if test="where.menuType != null">
+                and menu_type = #{where.menuType,jdbcType=INTEGER}
+            </if>
+            <if test="where.orderNum != null">
+                and order_num = #{where.orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="where.creator != null">
+                and creator = #{where.creator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.createTime != null">
+                and create_time = #{where.createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="where.updator != null">
+                and updator = #{where.updator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.updateTime != null">
+                and update_time = #{where.updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="where.deleted != null">
+                and deleted = #{where.deleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </update>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update t_menu
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="menu_name = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.menuName}
+                </foreach>
+            </trim>
+            <trim prefix="menu_url = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.menuUrl}
+                </foreach>
+            </trim>
+            <trim prefix="menu_code = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.menuCode}
+                </foreach>
+            </trim>
+            <trim prefix="parent_id = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.parentId}
+                </foreach>
+            </trim>
+            <trim prefix="menu_type = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.menuType}
+                </foreach>
+            </trim>
+            <trim prefix="order_num = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.orderNum}
+                </foreach>
+            </trim>
+            <trim prefix="creator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.creator}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.createTime}
+                </foreach>
+            </trim>
+            <trim prefix="updator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updator}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updateTime}
+                </foreach>
+            </trim>
+            <trim prefix="deleted = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.deleted}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from t_menu where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--通过实体非空属性删除-->
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TMenu">
+        delete from t_menu
+        <where>
+            <if test="menuName != null">
+                and menu_name = #{menuName,jdbcType=VARCHAR}
+            </if>
+            <if test="menuUrl != null">
+                and menu_url = #{menuUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="menuCode != null">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId,jdbcType=INTEGER}
+            </if>
+            <if test="menuType != null">
+                and menu_type = #{menuType,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </delete>
+
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from t_menu where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="countAll" resultType="int">
+        select count(id) from t_menu
+    </select>
+
+    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TMenu" resultType="int">
+        select count(id) from t_menu
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="menuName != null">
+                and menu_name = #{menuName,jdbcType=VARCHAR}
+            </if>
+            <if test="menuUrl != null">
+                and menu_url = #{menuUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="menuCode != null">
+                and menu_code = #{menuCode,jdbcType=VARCHAR}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId,jdbcType=INTEGER}
+            </if>
+            <if test="menuType != null">
+                and menu_type = #{menuType,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                and order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deleted != null">
+                and deleted = #{deleted,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

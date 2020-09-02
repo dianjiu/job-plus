@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.dianjiu.task.dao.TTaskDetailsDao">
+
+    <resultMap type="cn.org.dianjiu.task.entity.TTaskDetails" id="TTaskDetailsResultMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="taskNo" column="task_no" jdbcType="VARCHAR"/>
+        <result property="taskName" column="task_name" jdbcType="VARCHAR"/>
+        <result property="groupNo" column="group_no" jdbcType="VARCHAR"/>
+        <result property="groupName" column="group_name" jdbcType="VARCHAR"/>
+        <result property="taskDesc" column="task_desc" jdbcType="VARCHAR"/>
+        <result property="cornRule" column="corn_rule" jdbcType="VARCHAR"/>
+        <result property="sendType" column="send_type" jdbcType="VARCHAR"/>
+        <result property="sendUrl" column="send_url" jdbcType="VARCHAR"/>
+        <result property="sendParam" column="send_param" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="nextExecuteTime" column="next_execute_time" jdbcType="TIMESTAMP"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updator" column="updator" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="table_field">
+      id, task_no, task_name, group_no, group_name, task_desc, corn_rule, send_type, send_url, send_param, status, next_execute_time, creator, create_time, updator, update_time
+    </sql>
+
+    <!--通过Id查询单个对象-->
+    <select id="getById" resultMap="TTaskDetailsResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="table_field"/>
+        from t_task_details
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+    <!--通过实体不为空的属性作为筛选条件查询对象列表-->
+    <select id="listByEntity" resultMap="TTaskDetailsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskDetails">
+        select
+        <include refid="table_field"/>
+        from t_task_details
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskNo != null">
+                and task_no = #{taskNo,jdbcType=VARCHAR}
+            </if>
+            <if test="taskName != null">
+                and task_name = #{taskName,jdbcType=VARCHAR}
+            </if>
+            <if test="groupNo != null">
+                and group_no = #{groupNo,jdbcType=VARCHAR}
+            </if>
+            <if test="groupName != null">
+                and group_name = #{groupName,jdbcType=VARCHAR}
+            </if>
+            <if test="taskDesc != null">
+                and task_desc = #{taskDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="cornRule != null">
+                and corn_rule = #{cornRule,jdbcType=VARCHAR}
+            </if>
+            <if test="sendType != null">
+                and send_type = #{sendType,jdbcType=VARCHAR}
+            </if>
+            <if test="sendUrl != null">
+                and send_url = #{sendUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="sendParam != null">
+                and send_param = #{sendParam,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="nextExecuteTime != null">
+                and next_execute_time = #{nextExecuteTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <!--通过实体不为空的属性作为筛选条件查询单个对象-->
+    <select id="getByEntity" resultMap="TTaskDetailsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskDetails">
+        select
+        <include refid="table_field"/>
+        from t_task_details
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskNo != null">
+                and task_no = #{taskNo,jdbcType=VARCHAR}
+            </if>
+            <if test="taskName != null">
+                and task_name = #{taskName,jdbcType=VARCHAR}
+            </if>
+            <if test="groupNo != null">
+                and group_no = #{groupNo,jdbcType=VARCHAR}
+            </if>
+            <if test="groupName != null">
+                and group_name = #{groupName,jdbcType=VARCHAR}
+            </if>
+            <if test="taskDesc != null">
+                and task_desc = #{taskDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="cornRule != null">
+                and corn_rule = #{cornRule,jdbcType=VARCHAR}
+            </if>
+            <if test="sendType != null">
+                and send_type = #{sendType,jdbcType=VARCHAR}
+            </if>
+            <if test="sendUrl != null">
+                and send_url = #{sendUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="sendParam != null">
+                and send_param = #{sendParam,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="nextExecuteTime != null">
+                and next_execute_time = #{nextExecuteTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <!--通过Id列表作为筛选条件查询对象列表，列表长度不为0-->
+    <select id="listByIds" resultMap="TTaskDetailsResultMap" parameterType="list">
+        select
+        <include refid="table_field"/>
+        from t_task_details
+        where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--新增实体属性不为null的记录-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true"
+            parameterType="cn.org.dianjiu.task.entity.TTaskDetails">
+        insert into t_task_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="taskNo != null">
+                task_no,
+            </if>
+            <if test="taskName != null">
+                task_name,
+            </if>
+            <if test="groupNo != null">
+                group_no,
+            </if>
+            <if test="groupName != null">
+                group_name,
+            </if>
+            <if test="taskDesc != null">
+                task_desc,
+            </if>
+            <if test="cornRule != null">
+                corn_rule,
+            </if>
+            <if test="sendType != null">
+                send_type,
+            </if>
+            <if test="sendUrl != null">
+                send_url,
+            </if>
+            <if test="sendParam != null">
+                send_param,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="nextExecuteTime != null">
+                next_execute_time,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updator != null">
+                updator,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="taskNo != null">
+                #{taskNo,jdbcType=VARCHAR},
+            </if>
+            <if test="taskName != null">
+                #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="groupNo != null">
+                #{groupNo,jdbcType=VARCHAR},
+            </if>
+            <if test="groupName != null">
+                #{groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskDesc != null">
+                #{taskDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="cornRule != null">
+                #{cornRule,jdbcType=VARCHAR},
+            </if>
+            <if test="sendType != null">
+                #{sendType,jdbcType=VARCHAR},
+            </if>
+            <if test="sendUrl != null">
+                #{sendUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="sendParam != null">
+                #{sendParam,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="nextExecuteTime != null">
+                #{nextExecuteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null">
+                #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true" parameterType="list">
+        insert into t_task_details
+        (<if test="id != null">id,</if>task_no, task_name, group_no, group_name, task_desc, corn_rule, send_type,
+        send_url, send_param, status, next_execute_time, creator, create_time, updator, update_time)
+        values
+        <foreach item="item" collection="list" separator="," open="" close="" index="index">
+            (<if test="item.id != null">#{item.id,jdbcType=INTEGER},</if>#{item.taskNo,jdbcType=VARCHAR},
+            #{item.taskName,jdbcType=VARCHAR}, #{item.groupNo,jdbcType=VARCHAR}, #{item.groupName,jdbcType=VARCHAR},
+            #{item.taskDesc,jdbcType=VARCHAR}, #{item.cornRule,jdbcType=VARCHAR}, #{item.sendType,jdbcType=VARCHAR},
+            #{item.sendUrl,jdbcType=VARCHAR}, #{item.sendParam,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR},
+            #{item.nextExecuteTime,jdbcType=TIMESTAMP}, #{item.creator,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP}, #{item.updator,jdbcType=VARCHAR},
+            #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改实体属性不为null的列-->
+    <update id="update" parameterType="cn.org.dianjiu.task.entity.TTaskDetails">
+        update t_task_details
+        <set>
+            <if test="taskNo != null and taskNo != ''">
+                task_no = #{taskNo,jdbcType=VARCHAR},
+            </if>
+            <if test="taskName != null and taskName != ''">
+                task_name = #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="groupNo != null and groupNo != ''">
+                group_no = #{groupNo,jdbcType=VARCHAR},
+            </if>
+            <if test="groupName != null and groupName != ''">
+                group_name = #{groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskDesc != null and taskDesc != ''">
+                task_desc = #{taskDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="cornRule != null and cornRule != ''">
+                corn_rule = #{cornRule,jdbcType=VARCHAR},
+            </if>
+            <if test="sendType != null and sendType != ''">
+                send_type = #{sendType,jdbcType=VARCHAR},
+            </if>
+            <if test="sendUrl != null and sendUrl != ''">
+                send_url = #{sendUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="sendParam != null and sendParam != ''">
+                send_param = #{sendParam,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="nextExecuteTime != null">
+                next_execute_time = #{nextExecuteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null and creator != ''">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null and updator != ''">
+                updator = #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--通过表字段修改实体属性不为null的列-->
+    <update id="updateByField">
+        update t_task_details
+        <set>
+            <if test="where.taskNo == null and set.taskNo != null and set.taskNo != ''">
+                task_no = #{set.taskNo,jdbcType=VARCHAR},
+            </if>
+            <if test="where.taskName == null and set.taskName != null and set.taskName != ''">
+                task_name = #{set.taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.groupNo == null and set.groupNo != null and set.groupNo != ''">
+                group_no = #{set.groupNo,jdbcType=VARCHAR},
+            </if>
+            <if test="where.groupName == null and set.groupName != null and set.groupName != ''">
+                group_name = #{set.groupName,jdbcType=VARCHAR},
+            </if>
+            <if test="where.taskDesc == null and set.taskDesc != null and set.taskDesc != ''">
+                task_desc = #{set.taskDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="where.cornRule == null and set.cornRule != null and set.cornRule != ''">
+                corn_rule = #{set.cornRule,jdbcType=VARCHAR},
+            </if>
+            <if test="where.sendType == null and set.sendType != null and set.sendType != ''">
+                send_type = #{set.sendType,jdbcType=VARCHAR},
+            </if>
+            <if test="where.sendUrl == null and set.sendUrl != null and set.sendUrl != ''">
+                send_url = #{set.sendUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="where.sendParam == null and set.sendParam != null and set.sendParam != ''">
+                send_param = #{set.sendParam,jdbcType=VARCHAR},
+            </if>
+            <if test="where.status == null and set.status != null and set.status != ''">
+                status = #{set.status,jdbcType=VARCHAR},
+            </if>
+            <if test="where.nextExecuteTime == null and set.nextExecuteTime != null">
+                next_execute_time = #{set.nextExecuteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="where.creator == null and set.creator != null and set.creator != ''">
+                creator = #{set.creator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.createTime == null and set.createTime != null">
+                create_time = #{set.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="where.updator == null and set.updator != null and set.updator != ''">
+                updator = #{set.updator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.updateTime == null and set.updateTime != null">
+                update_time = #{set.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            <if test="where.id != null">
+                and id = #{where.id,jdbcType=INTEGER}
+            </if>
+            <if test="where.taskNo != null">
+                and task_no = #{where.taskNo,jdbcType=VARCHAR}
+            </if>
+            <if test="where.taskName != null">
+                and task_name = #{where.taskName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.groupNo != null">
+                and group_no = #{where.groupNo,jdbcType=VARCHAR}
+            </if>
+            <if test="where.groupName != null">
+                and group_name = #{where.groupName,jdbcType=VARCHAR}
+            </if>
+            <if test="where.taskDesc != null">
+                and task_desc = #{where.taskDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="where.cornRule != null">
+                and corn_rule = #{where.cornRule,jdbcType=VARCHAR}
+            </if>
+            <if test="where.sendType != null">
+                and send_type = #{where.sendType,jdbcType=VARCHAR}
+            </if>
+            <if test="where.sendUrl != null">
+                and send_url = #{where.sendUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="where.sendParam != null">
+                and send_param = #{where.sendParam,jdbcType=VARCHAR}
+            </if>
+            <if test="where.status != null">
+                and status = #{where.status,jdbcType=VARCHAR}
+            </if>
+            <if test="where.nextExecuteTime != null">
+                and next_execute_time = #{where.nextExecuteTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="where.creator != null">
+                and creator = #{where.creator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.createTime != null">
+                and create_time = #{where.createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="where.updator != null">
+                and updator = #{where.updator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.updateTime != null">
+                and update_time = #{where.updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </update>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update t_task_details
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="task_no = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.taskNo}
+                </foreach>
+            </trim>
+            <trim prefix="task_name = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.taskName}
+                </foreach>
+            </trim>
+            <trim prefix="group_no = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.groupNo}
+                </foreach>
+            </trim>
+            <trim prefix="group_name = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.groupName}
+                </foreach>
+            </trim>
+            <trim prefix="task_desc = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.taskDesc}
+                </foreach>
+            </trim>
+            <trim prefix="corn_rule = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.cornRule}
+                </foreach>
+            </trim>
+            <trim prefix="send_type = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.sendType}
+                </foreach>
+            </trim>
+            <trim prefix="send_url = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.sendUrl}
+                </foreach>
+            </trim>
+            <trim prefix="send_param = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.sendParam}
+                </foreach>
+            </trim>
+            <trim prefix="status = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.status}
+                </foreach>
+            </trim>
+            <trim prefix="next_execute_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.nextExecuteTime}
+                </foreach>
+            </trim>
+            <trim prefix="creator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.creator}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.createTime}
+                </foreach>
+            </trim>
+            <trim prefix="updator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updator}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updateTime}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from t_task_details where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--通过实体非空属性删除-->
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskDetails">
+        delete from t_task_details
+        <where>
+            <if test="taskNo != null">
+                and task_no = #{taskNo,jdbcType=VARCHAR}
+            </if>
+            <if test="taskName != null">
+                and task_name = #{taskName,jdbcType=VARCHAR}
+            </if>
+            <if test="groupNo != null">
+                and group_no = #{groupNo,jdbcType=VARCHAR}
+            </if>
+            <if test="groupName != null">
+                and group_name = #{groupName,jdbcType=VARCHAR}
+            </if>
+            <if test="taskDesc != null">
+                and task_desc = #{taskDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="cornRule != null">
+                and corn_rule = #{cornRule,jdbcType=VARCHAR}
+            </if>
+            <if test="sendType != null">
+                and send_type = #{sendType,jdbcType=VARCHAR}
+            </if>
+            <if test="sendUrl != null">
+                and send_url = #{sendUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="sendParam != null">
+                and send_param = #{sendParam,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="nextExecuteTime != null">
+                and next_execute_time = #{nextExecuteTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </delete>
+
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from t_task_details where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="countAll" resultType="int">
+        select count(id) from t_task_details
+    </select>
+
+    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskDetails" resultType="int">
+        select count(id) from t_task_details
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskNo != null">
+                and task_no = #{taskNo,jdbcType=VARCHAR}
+            </if>
+            <if test="taskName != null">
+                and task_name = #{taskName,jdbcType=VARCHAR}
+            </if>
+            <if test="groupNo != null">
+                and group_no = #{groupNo,jdbcType=VARCHAR}
+            </if>
+            <if test="groupName != null">
+                and group_name = #{groupName,jdbcType=VARCHAR}
+            </if>
+            <if test="taskDesc != null">
+                and task_desc = #{taskDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="cornRule != null">
+                and corn_rule = #{cornRule,jdbcType=VARCHAR}
+            </if>
+            <if test="sendType != null">
+                and send_type = #{sendType,jdbcType=VARCHAR}
+            </if>
+            <if test="sendUrl != null">
+                and send_url = #{sendUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="sendParam != null">
+                and send_param = #{sendParam,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="nextExecuteTime != null">
+                and next_execute_time = #{nextExecuteTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>

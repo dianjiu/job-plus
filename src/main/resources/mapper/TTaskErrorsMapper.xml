@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.dianjiu.task.dao.TTaskErrorsDao">
+
+    <resultMap type="cn.org.dianjiu.task.entity.TTaskErrors" id="TTaskErrorsResultMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="taskexecuterecordid" column="taskExecuteRecordId" jdbcType="VARCHAR"/>
+        <result property="errorkey" column="errorKey" jdbcType="VARCHAR"/>
+        <result property="errorvalue" column="errorValue" jdbcType="VARCHAR"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updator" column="updator" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="table_field">
+      id, taskExecuteRecordId, errorKey, errorValue, creator, create_time, updator, update_time
+    </sql>
+
+    <!--通过Id查询单个对象-->
+    <select id="getById" resultMap="TTaskErrorsResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="table_field"/>
+        from t_task_errors
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+    <!--通过实体不为空的属性作为筛选条件查询对象列表-->
+    <select id="listByEntity" resultMap="TTaskErrorsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskErrors">
+        select
+        <include refid="table_field"/>
+        from t_task_errors
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskexecuterecordid != null">
+                and taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR}
+            </if>
+            <if test="errorkey != null">
+                and errorKey = #{errorkey,jdbcType=VARCHAR}
+            </if>
+            <if test="errorvalue != null">
+                and errorValue = #{errorvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <!--通过实体不为空的属性作为筛选条件查询单个对象-->
+    <select id="getByEntity" resultMap="TTaskErrorsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskErrors">
+        select
+        <include refid="table_field"/>
+        from t_task_errors
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskexecuterecordid != null">
+                and taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR}
+            </if>
+            <if test="errorkey != null">
+                and errorKey = #{errorkey,jdbcType=VARCHAR}
+            </if>
+            <if test="errorvalue != null">
+                and errorValue = #{errorvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <!--通过Id列表作为筛选条件查询对象列表，列表长度不为0-->
+    <select id="listByIds" resultMap="TTaskErrorsResultMap" parameterType="list">
+        select
+        <include refid="table_field"/>
+        from t_task_errors
+        where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--新增实体属性不为null的记录-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TTaskErrors">
+        insert into t_task_errors
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="taskexecuterecordid != null">
+                taskExecuteRecordId,
+            </if>
+            <if test="errorkey != null">
+                errorKey,
+            </if>
+            <if test="errorvalue != null">
+                errorValue,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updator != null">
+                updator,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="taskexecuterecordid != null">
+                #{taskexecuterecordid,jdbcType=VARCHAR},
+            </if>
+            <if test="errorkey != null">
+                #{errorkey,jdbcType=VARCHAR},
+            </if>
+            <if test="errorvalue != null">
+                #{errorvalue,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null">
+                #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <!--批量新增所有列，列表长度不能为0，且列表id统一为null或者统一不为null-->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true" parameterType="list">
+        insert into t_task_errors
+        (<if test="id != null">id,</if>taskExecuteRecordId, errorKey, errorValue, creator, create_time, updator,
+        update_time)
+        values
+        <foreach item="item" collection="list" separator="," open="" close="" index="index">
+            (<if test="item.id != null">#{item.id,jdbcType=INTEGER},</if>#{item.taskexecuterecordid,jdbcType=VARCHAR},
+            #{item.errorkey,jdbcType=VARCHAR}, #{item.errorvalue,jdbcType=VARCHAR}, #{item.creator,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=TIMESTAMP}, #{item.updator,jdbcType=VARCHAR},
+            #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+    <!--通过主键修改实体属性不为null的列-->
+    <update id="update" parameterType="cn.org.dianjiu.task.entity.TTaskErrors">
+        update t_task_errors
+        <set>
+            <if test="taskexecuterecordid != null and taskexecuterecordid != ''">
+                taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
+            </if>
+            <if test="errorkey != null and errorkey != ''">
+                errorKey = #{errorkey,jdbcType=VARCHAR},
+            </if>
+            <if test="errorvalue != null and errorvalue != ''">
+                errorValue = #{errorvalue,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null and creator != ''">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updator != null and updator != ''">
+                updator = #{updator,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--通过表字段修改实体属性不为null的列-->
+    <update id="updateByField">
+        update t_task_errors
+        <set>
+            <if test="where.taskexecuterecordid == null and set.taskexecuterecordid != null and set.taskexecuterecordid != ''">
+                taskExecuteRecordId = #{set.taskexecuterecordid,jdbcType=VARCHAR},
+            </if>
+            <if test="where.errorkey == null and set.errorkey != null and set.errorkey != ''">
+                errorKey = #{set.errorkey,jdbcType=VARCHAR},
+            </if>
+            <if test="where.errorvalue == null and set.errorvalue != null and set.errorvalue != ''">
+                errorValue = #{set.errorvalue,jdbcType=VARCHAR},
+            </if>
+            <if test="where.creator == null and set.creator != null and set.creator != ''">
+                creator = #{set.creator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.createTime == null and set.createTime != null">
+                create_time = #{set.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="where.updator == null and set.updator != null and set.updator != ''">
+                updator = #{set.updator,jdbcType=VARCHAR},
+            </if>
+            <if test="where.updateTime == null and set.updateTime != null">
+                update_time = #{set.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            <if test="where.id != null">
+                and id = #{where.id,jdbcType=INTEGER}
+            </if>
+            <if test="where.taskexecuterecordid != null">
+                and taskExecuteRecordId = #{where.taskexecuterecordid,jdbcType=VARCHAR}
+            </if>
+            <if test="where.errorkey != null">
+                and errorKey = #{where.errorkey,jdbcType=VARCHAR}
+            </if>
+            <if test="where.errorvalue != null">
+                and errorValue = #{where.errorvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="where.creator != null">
+                and creator = #{where.creator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.createTime != null">
+                and create_time = #{where.createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="where.updator != null">
+                and updator = #{where.updator,jdbcType=VARCHAR}
+            </if>
+            <if test="where.updateTime != null">
+                and update_time = #{where.updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </update>
+
+    <!--通过主键修改实体列表，列表长度不能为0，注意：当实体属性为null时，对应的列也会别更新为null-->
+    <update id="updateBatch" parameterType="list">
+        update t_task_errors
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="taskExecuteRecordId = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.taskexecuterecordid}
+                </foreach>
+            </trim>
+            <trim prefix="errorKey = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.errorkey}
+                </foreach>
+            </trim>
+            <trim prefix="errorValue = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.errorvalue}
+                </foreach>
+            </trim>
+            <trim prefix="creator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.creator}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.createTime}
+                </foreach>
+            </trim>
+            <trim prefix="updator = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updator}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" item="item" index="index">
+                    when id = #{item.id} then #{item.updateTime}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from t_task_errors where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--通过实体非空属性删除-->
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskErrors">
+        delete from t_task_errors
+        <where>
+            <if test="taskexecuterecordid != null">
+                and taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR}
+            </if>
+            <if test="errorkey != null">
+                and errorKey = #{errorkey,jdbcType=VARCHAR}
+            </if>
+            <if test="errorvalue != null">
+                and errorValue = #{errorvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </delete>
+
+    <!--通过主键列表删除，列表长度不能为0-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from t_task_errors where id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="countAll" resultType="int">
+        select count(id) from t_task_errors
+    </select>
+
+    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskErrors" resultType="int">
+        select count(id) from t_task_errors
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="taskexecuterecordid != null">
+                and taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR}
+            </if>
+            <if test="errorkey != null">
+                and errorKey = #{errorkey,jdbcType=VARCHAR}
+            </if>
+            <if test="errorvalue != null">
+                and errorValue = #{errorvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="creator != null">
+                and creator = #{creator,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updator != null">
+                and updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>
