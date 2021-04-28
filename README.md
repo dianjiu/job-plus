@@ -153,13 +153,16 @@ http://task.dianjiu.org.cn   (部署中。。。)
 ![t_task_error](./data/img/t_task_error.png)
 
 ## 更新日志
-[博客地址](http://point9.top)
+[Task Manage 项目介绍](https://www.yuque.com/dianjiu/wgebfo/oxc244)
 
-[Task Manage 更新日志](http://point9.top/articles/2020/07/04/1593856335181.html)
+[Task Manage 更新日志](https://www.yuque.com/dianjiu/wgebfo/fgz9x8)
 
-[Task Manage 分布式ID的思考](http://point9.top/articles/2020/07/05/1593882775705.html)
+[Task Manage 分布式ID的思考](https://www.yuque.com/dianjiu/wgebfo/oo97xh)
 
-[Task Manage 执行策略的思考](http://point9.top/articles/2020/07/05/1593884142790.html)  
+[Task Manage 执行策略的思考](https://www.yuque.com/dianjiu/wgebfo/zip7y0)
+
+## 关于点九
+[个人站点](https://dianjiu.co)
 
 ## 最后致谢
 感谢以下开源项目提供的项目参考
