@@ -116,11 +116,11 @@ http://jobplus.dianjiu.org.cn   (部署中。。。)
 ### 页面演示
 > 登录页
 
-![登录页](./data/img/job-plus-login.jpg)
+![登录页](./data/img/task-manage-login.jpg)
 
 > 仪表盘
 
-![仪表盘](./data/img/job-plus-index.jpg)
+![仪表盘](./data/img/task-manage-index.jpg)
 
 > 任务管理 =》任务列表
 
