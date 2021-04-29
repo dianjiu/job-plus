@@ -1,23 +1,23 @@
-# Task Manage
+# Job Plus
  
 > 基于SpringBoot的轻量级定时任务管理系统
 
-![SpringBoot](https://img.shields.io/badge/springboot-2.3.1-green.svg?style=flat-square) [![LICENSE](https://img.shields.io/github/license/dianjiu/task-manage.svg?style=flat-square)](https://github.com/dianjiu/task-manage/blob/master/LICENSE)   [![star](https://img.shields.io/github/stars/dianjiu/task-manage.svg?label=Stars&style=social)](https://github.com/dianjiu/task-manage) [![star](https://gitee.com/dianjiu/task-manage/badge/star.svg?theme=white)](https://gitee.com/dianjiu/task-manage) 
+![SpringBoot](https://img.shields.io/badge/springboot-2.3.1-green.svg?style=flat-square) [![LICENSE](https://img.shields.io/github/license/dianjiu/job-plus.svg?style=flat-square)](https://github.com/dianjiu/job-plus/blob/master/LICENSE)   [![star](https://img.shields.io/github/stars/dianjiu/job-plus.svg?label=Stars&style=social)](https://github.com/dianjiu/job-plus) [![star](https://gitee.com/dianjiu/job-plus/badge/star.svg?theme=white)](https://gitee.com/dianjiu/job-plus) 
  
-[https://github.com/dianjiu/task-manage](https://github.com/dianjiu/task-manage)
+[https://github.com/dianjiu/job-plus](https://github.com/dianjiu/job-plus)
 
-[https://gitee.io/dianjiu/task-manage](https://gitee.io/dianjiu/task-manage)
+[https://gitee.com/dianjiu/job-plus](https://gitee.com/dianjiu/job-plus)
 
-## 相关项目 task-manage-vue
+## 相关项目 job-plus-vue
 
 > 基于Vue的Task Manage的后管UI
 
-![VUE](https://img.shields.io/badge/vue-4.0-green.svg?style=flat-square) [![LICENSE](https://img.shields.io/github/license/dianjiu/task-manage-vue.svg?style=flat-square)](https://github.com/dianjiu/task-manage-vue/blob/master/LICENSE)   [![star](https://img.shields.io/github/stars/dianjiu/task-manage-vue.svg?label=Stars&style=social)](https://github.com/dianjiu/task-manage-vue) [![star](https://gitee.com/dianjiu/task-manage-vue/badge/star.svg?theme=white)](https://gitee.com/dianjiu/task-manage-vue) 
+![VUE](https://img.shields.io/badge/vue-4.0-green.svg?style=flat-square) [![LICENSE](https://img.shields.io/github/license/dianjiu/job-plus-vue.svg?style=flat-square)](https://github.com/dianjiu/job-plus-vue/blob/master/LICENSE)   [![star](https://img.shields.io/github/stars/dianjiu/job-plus-vue.svg?label=Stars&style=social)](https://github.com/dianjiu/job-plus-vue) [![star](https://gitee.com/dianjiu/job-plus-vue/badge/star.svg?theme=white)](https://gitee.com/dianjiu/job-plus-vue) 
 
 
-https://github.com/dianjiu/task-manage-vue
+https://github.com/dianjiu/job-plus-vue
 
-https://gitee.io/dianjiu/task-manage-vue
+https://gitee.com/dianjiu/job-plus-vue
 
 ## 技术选型  
 - springboot 2.3.1
@@ -100,27 +100,27 @@ https://gitee.io/dianjiu/task-manage-vue
 - [ ] 容器化：提供官方docker镜像，并实时更新推送dockerhub，进一步实现产品开箱即用；  
 
 ## 部署方式
-1. 执行sql目录下的task_manage.sql文件，建立task_manage需要的数据库表  
+1. 执行sql目录下的job-plus.sql文件，建立task_manage需要的数据库表  
 2. 修改application-local.yml中的数据库连接方式
-3. 通过ftp上传task-manage-1.0-SNAPSHOT.jar、start.sh、stop.sh到服务器指定目录
+3. 通过ftp上传job-plus-1.0-SNAPSHOT.jar、start.sh、stop.sh到服务器指定目录
 4. 进入服务器目录，执行 nohup sh start.sh & 命令启动成功
 5. 查看程序启动进程 netstat -anp | grep 18080
 6. 访问 http://localhost:18080/idnex.html 可通过web界面进行定时任务的管理
 
 ## 在线演示
 
-http://task.dianjiu.org.cn   (部署中。。。)
+http://jobplus.dianjiu.org.cn   (部署中。。。)
 
 ## 项目图片
 
 ### 页面演示
 > 登录页
 
-![登录页](./data/img/task-manage-login.jpg)
+![登录页](./data/img/job-plus-login.jpg)
 
 > 仪表盘
 
-![仪表盘](./data/img/task-manage-index.jpg)
+![仪表盘](./data/img/job-plus-index.jpg)
 
 > 任务管理 =》任务列表
 
@@ -153,17 +153,18 @@ http://task.dianjiu.org.cn   (部署中。。。)
 ![t_task_error](./data/img/t_task_error.png)
 
 ## 更新日志
-[Task Manage 项目介绍](https://www.yuque.com/dianjiu/wgebfo/oxc244)
+[Job Plus 项目介绍](https://www.yuque.com/dianjiu/wgebfo/oxc244)
 
-[Task Manage 更新日志](https://www.yuque.com/dianjiu/wgebfo/fgz9x8)
+[Job Plus 更新日志](https://www.yuque.com/dianjiu/wgebfo/fgz9x8)
 
-[Task Manage 分布式ID的思考](https://www.yuque.com/dianjiu/wgebfo/oo97xh)
+[Job Plus 分布式ID的思考](https://www.yuque.com/dianjiu/wgebfo/oo97xh)
 
-[Task Manage 执行策略的思考](https://www.yuque.com/dianjiu/wgebfo/zip7y0)
+[Job Plus 执行策略的思考](https://www.yuque.com/dianjiu/wgebfo/zip7y0)
 
 ## 关于点九
 [个人站点](https://dianjiu.co)
 
+![公众号](./data/img/wechat.jpg)
 ## 最后致谢
 感谢以下开源项目提供的项目参考
 - https://github.com/ElemeFE/element
