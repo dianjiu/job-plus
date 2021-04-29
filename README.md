@@ -10,7 +10,7 @@
 
 ## 相关项目 job-plus-vue
 
-> 基于Vue的Task Manage的后管UI
+> 基于Vue的Job Plus的后管UI
 
 ![VUE](https://img.shields.io/badge/vue-4.0-green.svg?style=flat-square) [![LICENSE](https://img.shields.io/github/license/dianjiu/job-plus-vue.svg?style=flat-square)](https://github.com/dianjiu/job-plus-vue/blob/master/LICENSE)   [![star](https://img.shields.io/github/stars/dianjiu/job-plus-vue.svg?label=Stars&style=social)](https://github.com/dianjiu/job-plus-vue) [![star](https://gitee.com/dianjiu/job-plus-vue/badge/star.svg?theme=white)](https://gitee.com/dianjiu/job-plus-vue) 
 
