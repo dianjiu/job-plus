@@ -15,7 +15,7 @@ server:
 
 spring:
   application:
-    name: task-manage
+    name: job-plus
   profiles:
     active: ${cfg.env}
 
@@ -28,7 +28,7 @@ jwt:
 
 # 日志配置
 logback:
-  appName: task-manage
+  appName: job-plus
   fileType: log
 
 logging:

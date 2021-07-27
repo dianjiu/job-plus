@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.dianjiu.task.dao.TUserRolesDao">
+<mapper namespace="cn.org.dianjiu.job.dao.TUserRolesDao">
 
-    <resultMap type="cn.org.dianjiu.task.entity.TUserRoles" id="TUserRolesResultMap">
+    <resultMap type="cn.org.dianjiu.job.entity.TUserRoles" id="TUserRolesResultMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <result property="roleId" column="role_id" jdbcType="INTEGER"/>
@@ -26,7 +26,7 @@
 
 
     <!--通过实体不为空的属性作为筛选条件查询对象列表-->
-    <select id="listByEntity" resultMap="TUserRolesResultMap" parameterType="cn.org.dianjiu.task.entity.TUserRoles">
+    <select id="listByEntity" resultMap="TUserRolesResultMap" parameterType="cn.org.dianjiu.job.entity.TUserRoles">
         select
         <include refid="table_field"/>
         from t_user_roles
@@ -56,7 +56,7 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个对象-->
-    <select id="getByEntity" resultMap="TUserRolesResultMap" parameterType="cn.org.dianjiu.task.entity.TUserRoles">
+    <select id="getByEntity" resultMap="TUserRolesResultMap" parameterType="cn.org.dianjiu.job.entity.TUserRoles">
         select
         <include refid="table_field"/>
         from t_user_roles
@@ -97,7 +97,7 @@
     </select>
 
     <!--新增实体属性不为null的记录-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TUserRoles">
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.job.entity.TUserRoles">
         insert into t_user_roles
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -160,7 +160,7 @@
     </insert>
 
     <!--通过主键修改实体属性不为null的列-->
-    <update id="update" parameterType="cn.org.dianjiu.task.entity.TUserRoles">
+    <update id="update" parameterType="cn.org.dianjiu.job.entity.TUserRoles">
         update t_user_roles
         <set>
             <if test="userId != null">
@@ -280,7 +280,7 @@
     </delete>
 
     <!--通过实体非空属性删除-->
-    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TUserRoles">
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.job.entity.TUserRoles">
         delete from t_user_roles
         <where>
             <if test="userId != null">
@@ -316,7 +316,7 @@
         select count(id) from t_user_roles
     </select>
 
-    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TUserRoles" resultType="int">
+    <select id="countByEntity" parameterType="cn.org.dianjiu.job.entity.TUserRoles" resultType="int">
         select count(id) from t_user_roles
         <where>
             <if test="id != null">

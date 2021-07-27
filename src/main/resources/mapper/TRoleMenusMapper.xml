@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.dianjiu.task.dao.TRoleMenusDao">
+<mapper namespace="cn.org.dianjiu.job.dao.TRoleMenusDao">
 
-    <resultMap type="cn.org.dianjiu.task.entity.TRoleMenus" id="TRoleMenusResultMap">
+    <resultMap type="cn.org.dianjiu.job.entity.TRoleMenus" id="TRoleMenusResultMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="roleId" column="role_id" jdbcType="INTEGER"/>
         <result property="menuId" column="menu_id" jdbcType="INTEGER"/>
@@ -26,7 +26,7 @@
 
 
     <!--通过实体不为空的属性作为筛选条件查询对象列表-->
-    <select id="listByEntity" resultMap="TRoleMenusResultMap" parameterType="cn.org.dianjiu.task.entity.TRoleMenus">
+    <select id="listByEntity" resultMap="TRoleMenusResultMap" parameterType="cn.org.dianjiu.job.entity.TRoleMenus">
         select
         <include refid="table_field"/>
         from t_role_menus
@@ -56,7 +56,7 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个对象-->
-    <select id="getByEntity" resultMap="TRoleMenusResultMap" parameterType="cn.org.dianjiu.task.entity.TRoleMenus">
+    <select id="getByEntity" resultMap="TRoleMenusResultMap" parameterType="cn.org.dianjiu.job.entity.TRoleMenus">
         select
         <include refid="table_field"/>
         from t_role_menus
@@ -97,7 +97,7 @@
     </select>
 
     <!--新增实体属性不为null的记录-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TRoleMenus">
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.job.entity.TRoleMenus">
         insert into t_role_menus
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -160,7 +160,7 @@
     </insert>
 
     <!--通过主键修改实体属性不为null的列-->
-    <update id="update" parameterType="cn.org.dianjiu.task.entity.TRoleMenus">
+    <update id="update" parameterType="cn.org.dianjiu.job.entity.TRoleMenus">
         update t_role_menus
         <set>
             <if test="roleId != null">
@@ -280,7 +280,7 @@
     </delete>
 
     <!--通过实体非空属性删除-->
-    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TRoleMenus">
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.job.entity.TRoleMenus">
         delete from t_role_menus
         <where>
             <if test="roleId != null">
@@ -316,7 +316,7 @@
         select count(id) from t_role_menus
     </select>
 
-    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TRoleMenus" resultType="int">
+    <select id="countByEntity" parameterType="cn.org.dianjiu.job.entity.TRoleMenus" resultType="int">
         select count(id) from t_role_menus
         <where>
             <if test="id != null">

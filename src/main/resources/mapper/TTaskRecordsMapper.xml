@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.dianjiu.task.dao.TTaskRecordsDao">
+<mapper namespace="cn.org.dianjiu.job.dao.TTaskRecordsDao">
 
-    <resultMap type="cn.org.dianjiu.task.entity.TTaskRecords" id="TTaskRecordsResultMap">
+    <resultMap type="cn.org.dianjiu.job.entity.TTaskRecords" id="TTaskRecordsResultMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="taskName" column="task_name" jdbcType="VARCHAR"/>
         <result property="groupName" column="group_name" jdbcType="VARCHAR"/>
@@ -32,7 +32,7 @@
 
 
     <!--通过实体不为空的属性作为筛选条件查询对象列表-->
-    <select id="listByEntity" resultMap="TTaskRecordsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskRecords">
+    <select id="listByEntity" resultMap="TTaskRecordsResultMap" parameterType="cn.org.dianjiu.job.entity.TTaskRecords">
         select
         <include refid="table_field"/>
         from t_task_records
@@ -80,7 +80,7 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个对象-->
-    <select id="getByEntity" resultMap="TTaskRecordsResultMap" parameterType="cn.org.dianjiu.task.entity.TTaskRecords">
+    <select id="getByEntity" resultMap="TTaskRecordsResultMap" parameterType="cn.org.dianjiu.job.entity.TTaskRecords">
         select
         <include refid="table_field"/>
         from t_task_records
@@ -140,7 +140,7 @@
 
     <!--新增实体属性不为null的记录-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true"
-            parameterType="cn.org.dianjiu.task.entity.TTaskRecords">
+            parameterType="cn.org.dianjiu.job.entity.TTaskRecords">
         insert into t_task_records
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -243,7 +243,7 @@
     </insert>
 
     <!--通过主键修改实体属性不为null的列-->
-    <update id="update" parameterType="cn.org.dianjiu.task.entity.TTaskRecords">
+    <update id="update" parameterType="cn.org.dianjiu.job.entity.TTaskRecords">
         update t_task_records
         <set>
             <if test="taskName != null and taskName != ''">
@@ -447,7 +447,7 @@
     </delete>
 
     <!--通过实体非空属性删除-->
-    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskRecords">
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.job.entity.TTaskRecords">
         delete from t_task_records
         <where>
             <if test="taskName != null">
@@ -501,7 +501,7 @@
         select count(id) from t_task_records
     </select>
 
-    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TTaskRecords" resultType="int">
+    <select id="countByEntity" parameterType="cn.org.dianjiu.job.entity.TTaskRecords" resultType="int">
         select count(id) from t_task_records
         <where>
             <if test="id != null">

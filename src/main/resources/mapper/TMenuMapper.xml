@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.dianjiu.task.dao.TMenuDao">
+<mapper namespace="cn.org.dianjiu.job.dao.TMenuDao">
 
-    <resultMap type="cn.org.dianjiu.task.entity.TMenu" id="TMenuResultMap">
+    <resultMap type="cn.org.dianjiu.job.entity.TMenu" id="TMenuResultMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
         <result property="menuUrl" column="menu_url" jdbcType="VARCHAR"/>
@@ -31,7 +31,7 @@
 
 
     <!--通过实体不为空的属性作为筛选条件查询对象列表-->
-    <select id="listByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.task.entity.TMenu">
+    <select id="listByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.job.entity.TMenu">
         select
         <include refid="table_field"/>
         from t_menu
@@ -76,7 +76,7 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个对象-->
-    <select id="getByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.task.entity.TMenu">
+    <select id="getByEntity" resultMap="TMenuResultMap" parameterType="cn.org.dianjiu.job.entity.TMenu">
         select
         <include refid="table_field"/>
         from t_menu
@@ -132,7 +132,7 @@
     </select>
 
     <!--新增实体属性不为null的记录-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TMenu">
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.job.entity.TMenu">
         insert into t_menu
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -228,7 +228,7 @@
     </insert>
 
     <!--通过主键修改实体属性不为null的列-->
-    <update id="update" parameterType="cn.org.dianjiu.task.entity.TMenu">
+    <update id="update" parameterType="cn.org.dianjiu.job.entity.TMenu">
         update t_menu
         <set>
             <if test="menuName != null and menuName != ''">
@@ -418,7 +418,7 @@
     </delete>
 
     <!--通过实体非空属性删除-->
-    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TMenu">
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.job.entity.TMenu">
         delete from t_menu
         <where>
             <if test="menuName != null">
@@ -469,7 +469,7 @@
         select count(id) from t_menu
     </select>
 
-    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TMenu" resultType="int">
+    <select id="countByEntity" parameterType="cn.org.dianjiu.job.entity.TMenu" resultType="int">
         select count(id) from t_menu
         <where>
             <if test="id != null">

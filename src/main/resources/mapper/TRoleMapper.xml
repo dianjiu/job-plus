@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.dianjiu.task.dao.TRoleDao">
+<mapper namespace="cn.org.dianjiu.job.dao.TRoleDao">
 
-    <resultMap type="cn.org.dianjiu.task.entity.TRole" id="TRoleResultMap">
+    <resultMap type="cn.org.dianjiu.job.entity.TRole" id="TRoleResultMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
 
 
     <!--通过实体不为空的属性作为筛选条件查询对象列表-->
-    <select id="listByEntity" resultMap="TRoleResultMap" parameterType="cn.org.dianjiu.task.entity.TRole">
+    <select id="listByEntity" resultMap="TRoleResultMap" parameterType="cn.org.dianjiu.job.entity.TRole">
         select
         <include refid="table_field"/>
         from t_role
@@ -52,7 +52,7 @@
     </select>
 
     <!--通过实体不为空的属性作为筛选条件查询单个对象-->
-    <select id="getByEntity" resultMap="TRoleResultMap" parameterType="cn.org.dianjiu.task.entity.TRole">
+    <select id="getByEntity" resultMap="TRoleResultMap" parameterType="cn.org.dianjiu.job.entity.TRole">
         select
         <include refid="table_field"/>
         from t_role
@@ -90,7 +90,7 @@
     </select>
 
     <!--新增实体属性不为null的记录-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.task.entity.TRole">
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="cn.org.dianjiu.job.entity.TRole">
         insert into t_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -147,7 +147,7 @@
     </insert>
 
     <!--通过主键修改实体属性不为null的列-->
-    <update id="update" parameterType="cn.org.dianjiu.task.entity.TRole">
+    <update id="update" parameterType="cn.org.dianjiu.job.entity.TRole">
         update t_role
         <set>
             <if test="roleName != null and roleName != ''">
@@ -253,7 +253,7 @@
     </delete>
 
     <!--通过实体非空属性删除-->
-    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.task.entity.TRole">
+    <delete id="deleteByEntity" parameterType="cn.org.dianjiu.job.entity.TRole">
         delete from t_role
         <where>
             <if test="roleName != null">
@@ -286,7 +286,7 @@
         select count(id) from t_role
     </select>
 
-    <select id="countByEntity" parameterType="cn.org.dianjiu.task.entity.TRole" resultType="int">
+    <select id="countByEntity" parameterType="cn.org.dianjiu.job.entity.TRole" resultType="int">
         select count(id) from t_role
         <where>
             <if test="id != null">

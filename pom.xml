@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.org.dianjiu</groupId>
-    <artifactId>task-manage</artifactId>
+    <artifactId>job-plus</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>task-manage</name>
+    <name>job-plus</name>
     <description>Demo project for Spring Boot</description>
 
     <!-- 引入父工程的spring boot依赖 -->
@@ -38,11 +38,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <!--security-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <!-- pagehelper -->
         <dependency>
@@ -92,11 +87,6 @@
             <version>5.3.10</version>
         </dependency>
         <!--JWT(Json Web Token)登录支持-->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
         <!-- 引入 Swagger 依赖 -->
         <dependency>
             <groupId>io.springfox</groupId>
