@@ -2,6 +2,7 @@ package cn.org.dianjiu.job.common.resp;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
@@ -34,12 +35,12 @@ public class TMenuResp implements Serializable {
     @ApiModelProperty("创建人")
     private String creator;
     @ApiModelProperty("创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     @ApiModelProperty("修改人")
     private String updator;
     @ApiModelProperty("修改时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     @ApiModelProperty("删除状态：0-存在1-已删除")
     private Integer deleted;

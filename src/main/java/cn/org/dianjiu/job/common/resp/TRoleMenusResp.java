@@ -1,5 +1,6 @@
 package cn.org.dianjiu.job.common.resp;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,12 +24,12 @@ public class TRoleMenusResp implements Serializable {
     @ApiModelProperty("菜单id")
     private Integer menuId;
     @ApiModelProperty("创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     @ApiModelProperty("修改人")
     private String updator;
     @ApiModelProperty("修改时间")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
 }

@@ -29,11 +29,11 @@ public class WebGlobalConfig {
         //暴露哪些头部信息
         config.addExposedHeader(HttpHeaders.ACCEPT);
         //放行哪些请求方式
-        //config.addAllowedMethod("GET");     //get
-        //config.addAllowedMethod("PUT");     //put
-        //config.addAllowedMethod("POST");    //post
-        //config.addAllowedMethod("DELETE");  //delete
-        config.addAllowedMethod("*");     //放行全部请求
+        config.addAllowedMethod("GET");     //get
+        config.addAllowedMethod("PUT");     //put
+        config.addAllowedMethod("POST");    //post
+        config.addAllowedMethod("DELETE");  //delete
+        //config.addAllowedMethod("*");     //放行全部请求
 
         //是否发送Cookie
         config.setAllowCredentials(true);
