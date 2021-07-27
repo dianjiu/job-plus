@@ -98,8 +98,6 @@ public class TTaskDetailsServiceImpl implements TTaskDetailsServiceI, Initializi
                 throw new BusinessException("400","根据tTaskDetailsReq【"+tTaskDetailsReq+"】没有查到相关记录！");
             }
             ObjectUtils.copyProperties(tTaskDetails1,tTaskDetailsResp);
-            // 时间戳转时间
-
             list.add(tTaskDetailsResp);
         }
         return list;
