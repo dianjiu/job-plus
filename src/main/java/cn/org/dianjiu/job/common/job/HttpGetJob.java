@@ -25,6 +25,10 @@ public class HttpGetJob implements ExecuteStrategy{
         this.sendParam = sendParam;
     }
 
+    public HttpGetJob(String sendUrl) {
+        this.sendUrl = sendUrl;
+    }
+
     public String getSendUrl() {
         return sendUrl;
     }

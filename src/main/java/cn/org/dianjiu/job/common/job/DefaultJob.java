@@ -104,7 +104,12 @@ public class DefaultJob implements  Job,Serializable {
                 try {
                     //result = HttpClientUtils.getMap(sendUrl, hashMap);
                     HttpGetType httpGetType = new HttpGetType();
-                    httpGetType.setExecuteStrategy(new HttpGetJob(sendUrl,hashMap));
+                    if(null == hashMap){
+                        httpGetType.setExecuteStrategy(new HttpGetJob(sendUrl));
+                    }
+                    if(null != hashMap){
+                        httpGetType.setExecuteStrategy(new HttpGetJob(sendUrl,hashMap));
+                    }
                     result = httpGetType.runTask();
                     logger.info("taskNo={},sendtype={}执行结果result{}", taskNo, sendType, result);
                     if (ObjectUtils.isBlank(result)) {

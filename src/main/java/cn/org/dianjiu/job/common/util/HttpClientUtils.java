@@ -56,7 +56,7 @@ public class HttpClientUtils {
     public static void main(String[] args) {
         String str="";
         HashMap hashMap = JSON.parseObject(str, HashMap.class);
-        String map = getMap("http://localhost:8080/tTaskDetails/get/2", hashMap);
+        String map = getMap("http://localhost:8080/tTaskDetails/get/1", hashMap);
         System.out.println(map);
     }
     /**
