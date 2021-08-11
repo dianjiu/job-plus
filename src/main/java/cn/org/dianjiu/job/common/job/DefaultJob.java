@@ -67,7 +67,7 @@ public class DefaultJob implements  Job,Serializable {
                 logger.info("taskNo={}保存执行记录失败", taskNo);
                 throw new BusinessException("400","【taskNo】"+taskNo+"保存执行记录失败");
             }
-
+            //执行PostJson请求
             if (Constant.POST_JSON.equals(sendType)) {
                 try {
                     //result = HttpClientUtils.postJson(sendUrl, sendParam);
@@ -83,6 +83,7 @@ public class DefaultJob implements  Job,Serializable {
                     throw ex;
                 }
             }
+            //执行PostForm请求
             if(Constant.POST_FORM_DATA.equals(sendType)){
                 HashMap hashMap = JSON.parseObject(sendParam, HashMap.class);
                 try {
@@ -99,6 +100,7 @@ public class DefaultJob implements  Job,Serializable {
                     throw ex;
                 }
             }
+            //执行get请求
             if(Constant.GET.equals(sendType)){
                 HashMap hashMap = JSON.parseObject(sendParam, HashMap.class);
                 try {
